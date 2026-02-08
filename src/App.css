@@ -5,16 +5,59 @@
 
 html {
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   min-width: 0;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
   @apply max-w-[1256px] mx-auto px-4;
+}
+
+/* Кнопка: тёмная тема — фиолетовый градиент как в референсе */
+.btn-primary-dark {
+  @apply inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 text-white;
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 50%, #5b21b6 100%);
+}
+.btn-primary-dark:hover {
+  background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 50%, #4c1d95 100%);
+}
+
+/* Кнопка: светлая тема — индиго/фиолетовый (без зелёного) */
+.btn-primary-light {
+  @apply inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 text-white;
+  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 50%, #3730a3 100%);
+}
+.btn-primary-light:hover {
+  background: linear-gradient(135deg, #4338ca 0%, #3730a3 50%, #312e81 100%);
+}
+
+/* Карточки: тёмная — фиолетовое свечение, светлая — нейтральная тень */
+.card-hover {
+  @apply transition-all duration-300;
+}
+.dark .card-hover:hover {
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(124, 58, 237, 0.2);
+}
+.card-hover:hover {
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(79, 70, 229, 0.15);
+}
+
+/* Герой светлая тема — индиго/фиолетовый оттенок (не зелёный) */
+.hero-mesh {
+  background-color: #f5f3ff;
+  background-image: radial-gradient(at 40% 20%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(124, 58, 237, 0.08) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(139, 92, 246, 0.06) 0px, transparent 50%);
+}
+.dark .hero-mesh {
+  background-image: none;
 }
 
 /* Чёткие анимации при скролле */

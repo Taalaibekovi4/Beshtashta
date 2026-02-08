@@ -10,6 +10,7 @@ export const translations = {
     tariffs: 'Тарифы',
     howToStart: 'Как начать',
     savings: 'Накопления',
+    downloadBtn: 'Скачать',
     finLiteracy: 'Фин. грамотность',
 
     // Hero
@@ -95,6 +96,7 @@ export const translations = {
     tariffs: 'Тарифтер',
     howToStart: 'Кантип баштайм',
     savings: 'Жыйноо',
+    downloadBtn: 'Жүктөө',
     finLiteracy: 'Финансы сабаттуулугу',
 
     heroTitle: 'Besh Tashta — смартфоңуздагы финансы сабаттуулугу',
