@@ -8,6 +8,7 @@ import ActivatePage from './page/activate/ActivatePage'
 import AboutPage from './page/about/AboutPage'
 import TermsPage from './page/terms/TermsPage'
 import FAQPage from './page/faq/FAQPage'
+import AdminVideosPage from './page/adminVideos/AdminVideosPage'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path="faq" element={<FAQPage />} />
               <Route path="activate" element={<ActivatePage />} />
               <Route path="activate/:token" element={<ActivatePage />} />
+              <Route path="admin" element={<AdminVideosPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Route>
           </Routes>

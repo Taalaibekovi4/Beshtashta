@@ -25,23 +25,36 @@ SECRET_KEY = 'django-insecure-+u%w5_jgt51t@j6q=88rk4+mow6_8dj+g+lp7qz&ocd+6^7f4q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+# CORS: фронт на Vite (dev)
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    # 'jazzmin',  # раскомментируйте после: pip install django-jazzmin
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
+    'drf_spectacular',
+
+    'app',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'app.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -50,6 +63,21 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+
+# Медиа (видео) файлы
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+#DRF + Swagger
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Video Token API',
+    'DESCRIPTION': 'Upload video and watch via one-time token',
+    'VERSION': '1.0.0',
+}
 
 TEMPLATES = [
     {
@@ -115,3 +143,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Jazzmin — тема админки
+JAZZMIN_SETTINGS = {
+    'site_title': 'Video Token Admin',
+    'site_header': 'Video Token',
+    'site_brand': 'Админка',
+    'welcome_sign': 'Добро пожаловать в админку видео и токенов',
+    'search_model': ['app.Video', 'app.Token'],
+    'show_sidebar': True,
+    'navigation_expanded': True,
+    'language_chooser': False,
+}
+JAZZMIN_UI_TWEAKS = {
+    'navbar_small_text': False,
+    'sidebar_nav_small_text': False,
+}
